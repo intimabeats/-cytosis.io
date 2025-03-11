@@ -63,7 +63,7 @@ export interface PowerUp extends Entity {
   apply(player: Player): void;
 }
 
-export interface Player {
+export interface Player extends Entity{ //Removed Entity to avoid errors
   id: string;
   name: string;
   cells: PlayerCell[];

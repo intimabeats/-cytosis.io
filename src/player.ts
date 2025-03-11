@@ -1,5 +1,5 @@
 // src/player.ts - Parte 1: Atualização para movimento contínuo e exibição de nome por célula
-import { Player, Vector2D, PowerUpType, Camera } from './types';
+import { Player, Vector2D, PowerUpType, Camera, Entity } from './types'; // Import Entity
 import { BaseCell } from './cell';
 import {
   generateId,
@@ -172,28 +172,28 @@ export class PlayerCell extends BaseCell {
 }
 
 export class GamePlayer implements Player, Entity { // Implements Entity
-  id: string;
-  name: string;
-  cells: PlayerCell[];
-  score: number;
-  color: string;
-  isAI: boolean;
-  activeEffects: Map<PowerUpType, number>;
-  targetDirection: Vector2D;
-  mousePosition: Vector2D;
-  lastSplitTime: number;
-  lastEjectTime: number;
-  maxCells: number;
-  minSplitMass: number;
-  minEjectMass: number;
-  highestScore: number;
-  totalFoodEaten: number;
-  totalPlayersEaten: number;
-  totalVirusHit: number;
-  totalPowerUpsCollected: number;
-    position: Vector2D;
-    velocity: Vector2D;
-    radius: number;
+    id: string;
+    name: string;
+    cells: PlayerCell[];
+    score: number;
+    color: string;
+    isAI: boolean;
+    activeEffects: Map<PowerUpType, number>;
+    targetDirection: Vector2D;
+    mousePosition: Vector2D;
+    lastSplitTime: number;
+    lastEjectTime: number;
+    maxCells: number;
+    minSplitMass: number;
+    minEjectMass: number;
+    highestScore: number;
+    totalFoodEaten: number;
+    totalPlayersEaten: number;
+    totalVirusHit: number;
+    totalPowerUpsCollected: number;
+    position: Vector2D; //Precisa ter no implements
+    velocity: Vector2D; //Precisa ter no implements
+    radius: number; //Precisa ter no implements
 
   // MELHORIA: Adicionado para controle de aceleração
   acceleration: Vector2D;
@@ -481,7 +481,7 @@ update(deltaTime: number): void {
     if (this.cells.length === 0) return;
 
     // Obter posição média para efeitos
-    const avgPos = this.getAveragePosition();
+    //const avgPos = this.getAveragePosition(); //Removendo para evitar erros
     //const screenPos = camera.worldToScreen(avgPos); // Removido, pois não é mais usado diretamente
 
     // Renderizar efeitos ativos
@@ -693,8 +693,7 @@ update(deltaTime: number): void {
     if (!target || typeof target.x !== 'number' || typeof target.y !== 'number') {
       return;
     }
-
-    // MELHORIA: Armazenar a posição real do mouse para movimento direto da célula
+		 // MELHORIA: Armazenar a posição real do mouse para movimento direto da célula
     this.mousePosition = { ...target };
 
     // Calcular direção da posição média para o alvo

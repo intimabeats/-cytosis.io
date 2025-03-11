@@ -5,9 +5,8 @@ import {
   distance,
   subtract,
   normalize,
-  add,
   randomPosition,
-  magnitude // Keep magnitude!
+  // Keep magnitude!
 } from './utils';
 import { GamePlayer } from './player'; // Import GamePlayer
 
@@ -564,100 +563,101 @@ export class AIController {
         }
     }
 
-  private executeChase(_deltaTime: number): void {  // Correção: _deltaTime
-    // TODO: Implementar chase
-  }
-  private executeFlee(_deltaTime: number): void { // Correção: _deltaTime
-    // TODO: Implementar flee
-  }
-  private executeFeed(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar feed
-  }
-  private executeSplitAndChase(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar splitAndChase
-  }
-  private executeAmbush(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar ambush
-  }
-  private executeDefend(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar defend
-  }
-  private executeScavenge(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar scavenge
-  }
-  private executePatrol(_deltaTime: number): void { // Correção: _deltaTime
-      // TODO: Implementar patrol
-  }
-    private executeHunt(_deltaTime: number): void { // Correção: _deltaTime
-        // TODO: Implementar hunt
-    }
-      private executeBait(_deltaTime: number): void { // Correção: _deltaTime
-        // TODO: Implementar bait
-    }
-      private executeTeamUp(_deltaTime: number): void { // Correção: _deltaTime
-        // TODO: Implementar teamUp
-    }
+  // Comentando as funções não utilizadas para evitar erros de compilação
+  // private executeChase(_deltaTime: number): void {  // Correção: _deltaTime
+  //   // TODO: Implementar chase
+  // }
+  // private executeFlee(_deltaTime: number): void { // Correção: _deltaTime
+  //   // TODO: Implementar flee
+  // }
+  // private executeFeed(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar feed
+  // }
+  // private executeSplitAndChase(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar splitAndChase
+  // }
+  // private executeAmbush(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar ambush
+  // }
+  // private executeDefend(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar defend
+  // }
+  // private executeScavenge(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar scavenge
+  // }
+  // private executePatrol(_deltaTime: number): void { // Correção: _deltaTime
+  //     // TODO: Implementar patrol
+  // }
+  //   private executeHunt(_deltaTime: number): void { // Correção: _deltaTime
+  //       // TODO: Implementar hunt
+  //   }
+  //     private executeBait(_deltaTime: number): void { // Correção: _deltaTime
+  //       // TODO: Implementar bait
+  //   }
+  //     private executeTeamUp(_deltaTime: number): void { // Correção: _deltaTime
+  //       // TODO: Implementar teamUp
+  //   }
 
 
-    private getNearbyEntities(): Entity[] {
-        // Este método deve ser chamado com as entidades do jogo
-        // Como não temos acesso direto ao estado do jogo aqui,
-        // implementaremos uma solução alternativa
+    // private getNearbyEntities(): Entity[] {
+    //     // Este método deve ser chamado com as entidades do jogo
+    //     // Como não temos acesso direto ao estado do jogo aqui,
+    //     // implementaremos uma solução alternativa
 
-        // Criar um evento personalizado para solicitar entidades
-        const requestEvent = new CustomEvent('ai-request-entities', {
-        detail: {
-            aiId: this.player.id,
-            position: this.player.getAveragePosition(),
-            range: 600 + this.difficultyLevel * 150
-        }
-        });
+    //     // Criar um evento personalizado para solicitar entidades
+    //     const requestEvent = new CustomEvent('ai-request-entities', {
+    //     detail: {
+    //         aiId: this.player.id,
+    //         position: this.player.getAveragePosition(),
+    //         range: 600 + this.difficultyLevel * 150
+    //     }
+    //     });
 
-        // Criar um manipulador de resposta
-        let entities: Entity[] = [];
-        const responseHandler = (e: any) => {
-          if (e.detail.aiId === this.player.id) {
-            entities = e.detail.entities;
-          }
-        };
+    //     // Criar um manipulador de resposta
+    //     let entities: Entity[] = [];
+    //     const responseHandler = (e: any) => {
+    //       if (e.detail.aiId === this.player.id) {
+    //         entities = e.detail.entities;
+    //       }
+    //     };
 
 
-        // Ouvir resposta
-        window.addEventListener('ai-entities-response', responseHandler);
+    //     // Ouvir resposta
+    //     window.addEventListener('ai-entities-response', responseHandler);
 
-        // Despachar solicitação
-        window.dispatchEvent(requestEvent);
+    //     // Despachar solicitação
+    //     window.dispatchEvent(requestEvent);
 
-        // Remover listener
-        window.removeEventListener('ai-entities-response', responseHandler);
+    //     // Remover listener
+    //     window.removeEventListener('ai-entities-response', responseHandler);
 
-        return entities;
-    }
+    //     return entities;
+    // }
 
       // Métodos auxiliares para comportamento de IA melhorado
 
-  private findSafeDirection(_threats: Entity[]): Vector2D { //_threats
-    // TODO: Implementar findSafeDirection
-    return {x: 0, y: 0};
-  }
+  // private findSafeDirection(_threats: Entity[]): Vector2D { //_threats
+  //   // TODO: Implementar findSafeDirection
+  //   return {x: 0, y: 0};
+  // }
 
-    private shouldSplit(_target: Entity): boolean { //_target
-        // TODO: Implementar shouldSplit
-        return false; // Placeholder
-    }
+  //   private shouldSplit(_target: Entity): boolean { //_target
+  //       // TODO: Implementar shouldSplit
+  //       return false; // Placeholder
+  //   }
 
-    private shouldEject(): boolean {
-        // TODO: Implementar shouldEject
-        return false; // Placeholder
-    }
+  //   private shouldEject(): boolean {
+  //       // TODO: Implementar shouldEject
+  //       return false; // Placeholder
+  //   }
 
-    private findOptimalPath(_target: Vector2D): Vector2D { // _target
-        // TODO: Implementar findOptimalPath
-        return {x:0, y: 0};
-    }
+  //   private findOptimalPath(_target: Vector2D): Vector2D { // _target
+  //       // TODO: Implementar findOptimalPath
+  //       return {x:0, y: 0};
+  //   }
 
-      // Método para lidar com situações especiais
-    handleSpecialSituation(_situation: string, _data: any): void { // _situation, _data
-        // TODO: Implementar handleSpecialSituation
-    }
+  //     // Método para lidar com situações especiais
+  //   handleSpecialSituation(_situation: string, _data: any): void { // _situation, _data
+  //       // TODO: Implementar handleSpecialSituation
+  //   }
 }

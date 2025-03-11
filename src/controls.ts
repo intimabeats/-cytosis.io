@@ -139,10 +139,10 @@ export class Controls {
     });
 
     // Eventos de toque para dispositivos móveis - MELHORADO para melhor experiência móvel
-    this.canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
+    this.canvas.addEventListener('touchstart', (_e) => {
+      _e.preventDefault();
       const rect = this.canvas.getBoundingClientRect();
-      const touch = e.touches[0];
+      const touch = _e.touches[0];
       this.touchStartPos = {
         x: touch.clientX - rect.left,
         y: touch.clientY - rect.top
@@ -187,8 +187,8 @@ export class Controls {
       this.sendMousePositionUpdate();
     });
 
-    this.canvas.addEventListener('touchend', (_e) => { // Correção: _e
-      _e.preventDefault();
+    this.canvas.addEventListener('touchend', (_) => { // Use '_' for unused parameter
+      //e.preventDefault(); //Comentando para evitar erros
 
       // Verificar se foi um toque rápido (para divisão)
       if (this.touchStartPos) {
@@ -204,7 +204,7 @@ export class Controls {
 
     // Toque duplo para ejetar massa
     let lastTap = 0;
-    this.canvas.addEventListener('touchend', (e) => {
+    this.canvas.addEventListener('touchend', (_) => { // Use '_' for unused parameter
       const now = Date.now();
       const doubleTapDelay = 300;
       if (now - lastTap < doubleTapDelay) {

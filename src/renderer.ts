@@ -1,6 +1,6 @@
 // src/renderer.ts - Versão melhorada para melhor desempenho visual
 import { Camera, GameState, PowerUpType } from './types';
-import { lerpColor } from './utils'; // Import lerpColor
+//import { lerpColor } from './utils'; // Import lerpColor //Comentando para evitar erros
 
 export class Renderer {
   canvas: HTMLCanvasElement;
@@ -466,7 +466,7 @@ export class Renderer {
   }
 
   private drawWorldBorder(worldSize: { x: number, y: number }): void {
-    const ctx = this.ctx;
+		 const ctx = this.ctx;
     const camera = this.camera;
 
     // Converter coordenadas do mundo para coordenadas da tela
